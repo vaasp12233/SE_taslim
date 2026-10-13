@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>🔔 Student Dashboard</h1>
+        <div>
+          <span id="welcome"></span>
+          <button onclick="logout()">Logout</button>
+        </div>
+      </div>
+
+      <div class="bell-status" id="bellStatus">⏰ Current time: <span id="clock"></span></div>
+
+      <div class="grid" style="margin-bottom: 20px">
+        <div class="stat">
+          <h3 id="currentPeriod">--</h3>
+          <p>Current Period</p>
+        </div>
+        <div class="stat">
+          <h3 id="nextPeriod">--</h3>
+          <p>Next Period</p>
+        </div>
+        <div class="stat">
+          <h3 id="bellCount">0</h3>
+          <p>Bells Rung Today</p>
+        </div>
+      </div>
+
+      <h2>Today's Timetable (<span id="today"></span>)</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Period</th>
+            <th>Time</th>
+            <th>Subject</th>
+            <th>Teacher</th>
+            <th>Room</th>
+          </tr>
+        </thead>
+        <tbody id="timetableBody"></tbody>
+      </table>
+    </div>
+
+    <script src="js/bell.js"></script>
+    <script src="js/dashboard.js"></script>
+  </body>
+</html>

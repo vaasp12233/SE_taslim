@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>🔔 Admin Panel</h1>
+        <div><span id="welcome"></span><button onclick="logout()">Logout</button></div>
+      </div>
+
+      <div class="tabs">
+        <button class="active" data-tab="timetable" onclick="showTab('timetable', this)">
+          📅 Timetable
+        </button>
+        <button data-tab="users" onclick="showTab('users', this)">👥 Users</button>
+      </div>
+
+      <div id="tab-timetable">
+        <div class="card" style="max-width: 100%">
+          <h2 id="formTitle">Add Timetable Entry</h2>
+          <div class="form-row">
+            <input id="f-section" placeholder="Section (e.g. CSE-A)" />
+            <select id="f-day">
+              <option>Monday</option>
+              <option>Tuesday</option>
+              <option>Wednesday</option>
+              <option>Thursday</option>
+              <option>Friday</option>
+              <option>Saturday</option>
+            </select>
+            <input id="f-period" type="number" placeholder="Period #" min="1" />
+          </div>
+          <div class="form-row">
+            <input id="f-subject" placeholder="Subject" />
+            <input id="f-teacher" placeholder="Teacher" />
+            <input id="f-room" placeholder="Room" />
+          </div>
+          <div class="form-row">
+            <input id="f-start" type="time" />
+            <input id="f-end" type="time" />
+            <button class="success" onclick="saveEntry()">💾 Save</button>
+            <button onclick="resetForm()">Cancel</button>
+          </div>
+        </div>
+
+        <div class="form-row" style="margin-top: 20px">
+          <input id="filter-section" placeholder="Filter by section" oninput="loadEntries()" />
+          <select id="filter-day" onchange="loadEntries()">
+            <option value="">All days</option>
+            <option>Monday</option>
+            <option>Tuesday</option>
+            <option>Wednesday</option>
+            <option>Thursday</option>
+            <option>Friday</option>
+            <option>Saturday</option>
+          </select>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Section</th>
+              <th>Day</th>
+              <th>Period</th>
+              <th>Time</th>
+              <th>Subject</th>
+              <th>Teacher</th>
+              <th>Room</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="entriesBody"></tbody>
+        </table>
+      </div>
+
+      <div id="tab-users" class="hidden">
+        <div class="card" style="max-width: 100%">
+          <h2>Create User</h2>
+          <div class="form-row">
+            <input id="u-username" placeholder="Username" />
+            <input id="u-password" type="password" placeholder="Password" />
+            <select id="u-role">
+              <option value="student">Student</option>
+              <option value="admin">Admin</option>
+            </select>
+            <input id="u-section" placeholder="Section (students only)" />
+            <button class="success" onclick="createUser()">➕ Create</button>
+          </div>
+          <p id="userMsg"></p>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+  </body>
+</html>
